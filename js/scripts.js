@@ -20,7 +20,7 @@ $("#formulario-cpf").submit(function(e){
 });
 
 //Valida o CPF e faz a busca no DB
-function validarCPF(cpf) {
+function buscarCPF(cpf) {
     var valor = cpf;
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf == '') {
@@ -63,38 +63,57 @@ function validarCPF(cpf) {
     if (rev != parseInt(cpf.charAt(10))) {
         document.getElementById('resultado').innerHTML = "<div class='alert alert-danger' style='text-align:center;' role='alert'>Por favor, Digite um CPF v&aacute;lido</div>";
         return false;
+    // busca o cpf no banco de dados    
+    } else {
+        var req;
+        cpf = cpf.replace(/[^\d]+/g, '');
+    
+        if(window.XMLHttpRequest) {
+            req = new XMLHttpRequest();
+         }
+         else if(window.ActiveXObject) {
+            req = new ActiveXObject("Microsoft.XMLHTTP");
+         }
+          
+         var url = "buscar_cpf.php?cpf=" + cpf;
+         req.open("GET", url, true); 
+         
+         req.onreadystatechange = function() {  
+             if(req.readyState == 1) {
+                 document.getElementById('resultado').innerHTML = 'Buscando CPF...';
+             }
+          
+             if(req.readyState == 4 && req.status == 200) {
+                 var resposta = req.responseText;
+                 document.getElementById('resultado').innerHTML = resposta;
+             }
+         }
+         req.send(null);
     }
-    return true;
 }
 
-//Funcao que verificada se o cpf esta cadastrado
-function buscarCPF(cpf){
+function buscarNome (nome) {
     var req;
-    cpf = cpf.replace(/[^\d]+/g, '');
 
     if(window.XMLHttpRequest) {
-       req = new XMLHttpRequest();
-    }
-    else if(window.ActiveXObject) {
-       req = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+        req = new XMLHttpRequest();
+     }
+     else if(window.ActiveXObject) {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+      
+     var url = "buscar_nome.php?nome=" + nome;
+     req.open("GET", url, true); 
      
-    var url = "buscar_cpf.php?cpf="+cpf;
-    req.open("Get", url, true); 
-    
-    req.onreadystatechange = function() {  
-        if(req.readyState == 1) {
-            document.getElementById('resultado').innerHTML = 'Buscando CPF...';
-        }
-     
-        if(req.readyState == 4 && req.status == 200) {
-            var resposta = req.responseText;
-            if(resposta != ""){
-                document.getElementById('resultado').innerHTML = "<div class='alert alert-danger' style='text-align:center;' role='alert'>CPF J&aacute; Cadastrado no Sistema!</div>";
-            }else{
-                document.formulario.submit();
-            }
-        }
-    }
-    req.send(null);
+     req.onreadystatechange = function() {  
+         if(req.readyState == 1) {
+             document.getElementById('resultado').innerHTML = 'Buscando Registro...';
+         }
+      
+         if(req.readyState == 4 && req.status == 200) {
+             var resposta = req.responseText;
+             document.getElementById('resultado').innerHTML = resposta;
+         }
+     }
+     req.send(null);
 }

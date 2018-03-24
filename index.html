@@ -28,24 +28,24 @@
             <hr>
             <h4 style="text-align:center">Verificar Inscrição</h4>
             <hr>
-            <form class="form-inline" id="formulario-cpf">
-                <label class="sr-only" for="inlineFormInput">CPF:</label>
-                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="cpf" placeholder="Digite o cpf">
-                <button type="submit" class="btn btn-md btn-info">Buscar</button>
+            <form class="form-inline" id="formcpf" name="formcpf">
+                <label class="sr-only" for="cpf">CPF:</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="cpf" name="cpf" placeholder="Digite o cpf">
+                <button type="button" class="btn btn-md btn-info" onclick="buscarCPF(formcpf.cpf.value)">Buscar</button>
             </form>
             <h6 style="text-align:center">ou</h6>
-            <form class="form-inline">
-                <label class="sr-only" for="inlineFormInputGroup">NOME:</label>
+            <form class="form-inline" id="formnome" name="formnome">
+                <label class="sr-only" for="nome">NOME:</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Digite o nome">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome">
                 </div>
-                <button type="submit" class="btn btn-md btn-info">Buscar</button>
+                <button type="button" class="btn btn-md btn-info" onclick="buscarNome(formnome.nome.value)">Buscar</button>
             </form>
             <br />
-            <div id="resultado"></div>
             <hr>
             <h4 style="text-align:center">Lista de inscritos</h4>
             <hr>
+            <div id="resultado"></div>
         </div>
     </div>
 </div>
