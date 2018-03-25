@@ -95,6 +95,11 @@ function buscarCPF(cpf) {
 function buscarNome (nome) {
     var req;
 
+    if (nome == '') {
+        document.getElementById('resultado').innerHTML = "<div class='alert alert-danger' style='text-align:center;' role='alert'>Por favor, Digite um nome v&aacute;lido</div>";
+        return false;
+    }
+
     if(window.XMLHttpRequest) {
         req = new XMLHttpRequest();
      }
@@ -108,6 +113,32 @@ function buscarNome (nome) {
      req.onreadystatechange = function() {  
          if(req.readyState == 1) {
              document.getElementById('resultado').innerHTML = 'Buscando Registro...';
+         }
+      
+         if(req.readyState == 4 && req.status == 200) {
+             var resposta = req.responseText;
+             document.getElementById('resultado').innerHTML = resposta;
+         }
+     }
+     req.send(null);
+}
+
+function confirmarPresenca(cpf) {
+    var req;
+
+    if(window.XMLHttpRequest) {
+        req = new XMLHttpRequest();
+     }
+     else if(window.ActiveXObject) {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+      
+     var url = "confirmar_presenca.php?cpf=" + cpf;
+     req.open("GET", url, true); 
+     
+     req.onreadystatechange = function() {  
+         if(req.readyState == 1) {
+             document.getElementById('resultado').innerHTML = 'Registrando inscrição...';
          }
       
          if(req.readyState == 4 && req.status == 200) {
