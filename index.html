@@ -23,29 +23,40 @@
 <body>
 
 <div class="container">
-    <div class="row justify-content-center align-items-center">
-        <div class="form-search">
+    <div class="row justify-content-center align-items-center form-search">
+        <div class="col-md-10">
             <hr>
-            <h4 style="text-align:center">Verificar Inscrição</h4>
-            <hr>
-            <form class="form-inline" id="formcpf" name="formcpf">
-                <label class="sr-only" for="cpf">CPF:</label>
-                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="cpf" name="cpf" placeholder="Digite o cpf" required>
-                <button type="button" class="btn btn-md btn-info" onclick="buscarCPF(formcpf.cpf.value)">Buscar</button>
-            </form>
-            <h6 style="text-align:center">ou</h6>
-            <form class="form-inline" id="formnome" name="formnome">
-                <label class="sr-only" for="nome">NOME:</label>
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4 style="text-align:center">VERIFICAR INSCRIÇÃO</h4>
+            <hr>        
+        </div>
+        <div class="col-md-5">
+        <form class="form" id="formcpf" name="formcpf">
+            <p data-aos="zoom-in" style="color: #e08e0b; font-size: 25px; text-align:center;"><b>DIGITE O CPF</b></p>
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="cpf" name="cpf" placeholder="Digite o cpf" required>
+            <br />
+            <button type="button" class="btn btn-lg btn-info btn-block" onclick="buscarCPF(formcpf.cpf.value)">Buscar</button>
+        </form>
+        </div>
+        <div class="col-md-5">
+            <form class="form" id="formnome" name="formnome">
+                    <p data-aos="zoom-in" style="color: #e08e0b; font-size: 25px; text-align:center;"><b>DIGITE O NOME</b></p>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
                 </div>
-                <button type="button" class="btn btn-md btn-info" onclick="buscarNome(formnome.nome.value)">Buscar</button>
+                <br />
+                <button type="button" class="btn btn-lg btn-info btn-block" onclick="buscarNome(formnome.nome.value)">Buscar</button>
             </form>
-            <br />
+        </div>
+        <div class="col-md-10">
             <hr>
-            <h4 style="text-align:center">Lista de inscritos</h4>
+            <h4 style="text-align:center">LISTA DE INSCRITOS</h4>
             <hr>
-            <div id="resultado"></div>
+            <div class="row">
+                <div class="col-md-6" style="background-color:rgb(226, 226, 226);">Nome </div>
+                <div class="col-md-4" style="background-color:rgb(226, 226, 226);">CPF </div>
+                <div class="col-md-2" style="background-color:rgb(226, 226, 226);">Check-in</div>
+            </div> 
+            <div class="row" id="resultado"></div>  
         </div>
     </div>
 </div>
