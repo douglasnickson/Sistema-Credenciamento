@@ -6,7 +6,7 @@ header('Content-Type: text/html; charset=utf-8');
 $host = "localhost";
 $usuario = "root";
 $senha = "Douglas13.";
-$banco = "inscricoes_db";
+$banco = "inscricao_db";
 
 //Efetuando a conexao
 $conn =  mysqli_connect($host, $usuario, $senha);

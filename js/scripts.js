@@ -125,8 +125,9 @@ function buscarNome (nome) {
      req.send(null);
 }
 
-function confirmarPresenca(cpf) {
+function confirmarPresenca(cpf, count) {
     var req;
+    var div_id = count;
 
     if(window.XMLHttpRequest) {
         req = new XMLHttpRequest();
@@ -145,7 +146,11 @@ function confirmarPresenca(cpf) {
       
          if(req.readyState == 4 && req.status == 200) {
              var resposta = req.responseText;
-             document.getElementById('resultado').innerHTML = resposta;
+             if (resposta){
+                document.getElementById('checkin-'+div_id).innerHTML = "Confirmado";
+             } else {
+                document.getElementById('resultado').innerHTML = resposta;
+             }
          }
      }
      req.send(null);
