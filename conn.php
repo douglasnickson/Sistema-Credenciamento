@@ -18,14 +18,12 @@ mysqli_query($conn,'SET character_set_connection=utf8');
 mysqli_query($conn,'SET character_set_client=utf8');
 mysqli_query($conn,'SET character_set_results=utf8');
 
-
-
 /*
 header('Content-Type: text/html; charset=utf-8');
 
 //Dados do Banco de Dados
-$host = "10.16.4.61";
-$usuario = "usr_pesquisapombal";
+$host = "10.16.32.118";
+$usuario = "usr_cred_marta";
 $senha = "W2K@pesquisapombal";
 $banco = "pesquisapombal";
 

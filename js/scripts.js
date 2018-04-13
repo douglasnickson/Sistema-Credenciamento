@@ -21,6 +21,7 @@ $("#formulario-cpf").submit(function(e){
 
 //Valida o CPF e faz a busca no DB
 function buscarCPF(cpf) {
+    document.getElementById('mostrarInscritos').style.display="inherit";
     var valor = cpf;
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf == '') {
@@ -93,6 +94,7 @@ function buscarCPF(cpf) {
 }
 
 function buscarNome (nome) {
+    document.getElementById('mostrarInscritos').style.display="inherit";
     var req;
 
     if (nome == '') {
